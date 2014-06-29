@@ -1,0 +1,100 @@
+﻿@model WasifProject.Models.UserTable
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@*<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.userName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.passwork)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.e_mail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.reg_date)
+        </th>
+        <th></th>
+    </tr>
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.userName)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.passwork)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.e_mail)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.reg_date)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=Model.Id  }) |
+            @Html.ActionLink("Details", "Details", new { id=Model.Id }) |
+            @Html.ActionLink("De Activate", "Delete", new { id=Model.Id })
+        </td>
+    </tr>
+
+
+</table>*@
+
+<div class="datagrid">
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.userName)
+        </th>
+        <td colspan="2">
+            @Html.DisplayFor(model => model.userName)
+        </td>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.passwork)
+        </th>
+        <td colspan="2">
+            @Html.DisplayFor(model => model.passwork)
+        </td>
+    </tr>
+    <tr>
+       <th>
+            @Html.DisplayNameFor(model => model.e_mail)
+        </th>
+        <td colspan="2">
+            @Html.DisplayFor(model => model.e_mail)
+        </td>
+    </tr>
+    <tr>
+       <th>
+            @Html.DisplayNameFor(model => model.reg_date)
+        </th>
+        <td colspan="2">
+            @Html.DisplayFor(model => model.reg_date)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <a href="~/User/Edit?id=@Model.Id"><img src="~/Images/edit.png"> </a>
+            @*@Html.ActionLink("Edit", "Edit", new { id=Model.Id  }) |*@
+        </td>
+        <td>
+            <a href="~/User/Details?id=@Model.Id"><img src="~/Images/detail.png"> </a>
+           
+        </td>
+        <td>
+            <a href="~/User/Delete?id=@Model.Id"><img src="~/Images/del.jpg"></a>
+            <br/> De Activate 
+            @*@Html.ActionLink("De Activate", "Delete", new { id=Model.Id })*@
+        </td>
+    </tr>
+</table>
+</div>

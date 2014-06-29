@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WasifProject.Models.FileData>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Upload Now", "Upload")
+</p>
+<div class="datagrid">
+<table border:2>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.user_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_protectionLevel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_protectionLevel)
+        </td>
+        <td>
+             <a href="~/File/Edit?id=@item.Id"><img src="~/Images/edit.png"> </a> |
+            <a href="~/File/Details?id=@item.Id"><img src="~/Images/detail.png"> </a>
+            |
+            <a href="~/File/Delete?id=@item.Id"><img src="~/Images/del.jpg"></a>
+        </td>
+    </tr>
+}
+
+</table>
+</div>

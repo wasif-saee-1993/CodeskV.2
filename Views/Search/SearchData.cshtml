@@ -1,0 +1,49 @@
+﻿@model IEnumerable<WasifProject.Models.FileData>
+@{
+    ViewBag.Title = "SearchData";
+    
+}
+<table border:2>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.user_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fileName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.C_protectionLevel)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fileName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.C_protectionLevel)
+        </td>
+        <td>detail.png
+            <a href="~/File/Details?id=@item.Id"><img src="~/Images/detail.png"> </a>
+            
+                | 
+            @{string urlOfFile = Url.Content("~/Files/" + item.user_id + item.fileName + "." + item.type);}
+            <a href="@urlOfFile" target='_blank'><img src='../Images/download.png'></a>
+                
+
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Search Results</h2>
+
+<div id="load" style="color:red;font-size:20px;">
+Loading    
+</div>
+	 <div class="wrapper">
+		<input style="width:600px;height:30px;" id="srch"  type="text" value="search codes" onblur="if(this.value=='') this.value='Search codes'" onFocus="if(this.value =='Search Code' ) this.value=''" >
+	</div>
+	<input  type="button" id="go" value="Search Now"/>
+
+
+<div id="searchResults"></div>
+@section Scripts {
+  @Scripts.Render("~/bundles/jquery")
+    <script>
+
+        $(document).ready(function () {
+            $("#abc").hide();
+            $("#load").hide();
+            $("#go").click(function () {
+               
+                var name = $('#srch').val();
+                $('#load').show();
+                $.getJSON("/Search/SearchData?Name=" + name, function (data) {
+                    $('#load').hide();
+                    if (data.length>0) {
+                        var div = $('#searchResults');
+                       
+                        div.html("<br/> " + "Data received from DB: " + "<br/>");
+                        $.each(data, function (i, item) {
+                            div.append("<br/>" + "File Name: " + item.fileName + ", user ID: " + item.user_id + " file type:  " + item.type + " <a href=..\\Files\\" + item.user_id + "" + item.fileName + "." + item.type + " target='_blank'> <img src='../Images/download.png'> </a>");
+                        });
+                    }
+                    else {
+                        var div = $('#searchResults');
+                        div.html("");
+                        div.append("<br/>No Data is Avaiable");
+                    }
+                });
+            });
+        });
+        
+       
+    </script> 
+}

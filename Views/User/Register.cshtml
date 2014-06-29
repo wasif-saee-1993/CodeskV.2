@@ -1,0 +1,149 @@
+﻿@model WasifProject.Models.UserTable
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<hgroup class="title">
+    <h2>@ViewBag.Title.</h2>
+</hgroup>
+
+<section id="loginForm">
+
+@using (Html.BeginForm("ValidateAndAdd","User","post"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div id="checking">Checking...</div>
+  <table style="background-color:palegreen;grid-row-sizing:50px;border-style:groove;border-width:2px">
+            <tr>
+              <td>  @Html.LabelFor(m => m.userName)</td>
+               <td> @Html.TextBoxFor(m => m.userName)</td>
+                <td>@Html.ValidationMessageFor(m => m.userName)</td>
+               <td> <div id="user_name_error" style="color:red;"></div></td>
+            </tr>
+            @*<tr>
+                <td><input type="button" id="b1" value="Check" /></td>
+            </tr>*@
+            <tr>
+              <td>  @Html.LabelFor(m => m.e_mail)</td>
+               <td> @Html.TextBoxFor(m => m.e_mail)</td>
+                <td>@Html.ValidationMessageFor(m => m.e_mail)</td>
+                <td><div id="e_mail_error" style="color:red;"></div></td>
+            </tr>
+            <tr>
+              <td>  @Html.LabelFor(m => m.reg_date)</td>
+              <td>  @Html.TextBoxFor(model => model.reg_date, new { @Value = DateTime.Now, id = "datepicker" , IEditableTextControl = false })</td>
+              <td> @Html.ValidationMessageFor(m => m.reg_date) </td>
+            </tr>
+            <tr>
+               <td> @Html.LabelFor(m => m.passwork)</td>
+               <td> @Html.PasswordFor(m => m.passwork)</td>
+               <td>@Html.ValidationMessageFor(m => m.passwork)</td>
+                <td> <div id="password_error" style="color:red;"></div></td>
+            </tr>
+           <tr>
+                <td>Enter Password Again</td>
+               <td> @Html.PasswordFor(m =>m.PasswordConfirm)</td>
+               <td>@Html.ValidationMessageFor(m => m.PasswordConfirm)</td>
+                @*<td><input type="password" id="pass2" value=""> </td>
+               <td><div id="pass2_error" style="color:red;"></div></td>*@
+
+           </tr>
+            <tr> <td colspan="3" style="flex-align:center;"><input type="submit" value="Register Now"  /></td></tr>
+        </table>
+    <p>
+        @Html.ActionLink("Login", "Login") if you have an account.
+    </p>
+}
+</section>
+
+@*<section class="social" id="socialLoginForm">
+    <h2>Use another service to log in.</h2>
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+</section>*@
+
+
+
+@*  @Scripts.Render("~/bundles/jquery")
+    <script>
+
+        $(document).ready(function(){
+
+            $('.submit').click(function(){
+                validateForm();   
+            });
+
+            function validateForm(){
+
+
+                var nameReg = /^[A-Za-z]+$/;
+                var numberReg =  /^[0-9]+$/;
+                var emailReg = /^([\w-\.]+([\w-]+\.)+[\w-]{2,4})?$/;
+                var email = $('#e_mail').val();
+                var pas1 = $('#pass2').val();
+                var pas2 = $('#passwork').val();
+                
+    
+    
+
+    var inputVal = new Array(email, pass1, pass2);
+
+    var inputMessage = new Array("email address", "password", "password 2");
+
+    
+
+    if (inputVal[0] == "") {
+        $('#e_mail_error').show();
+        $('#e_mail_error').append('<br /> Please enter your ' + inputMessage[0] );
+    } 
+    
+    if (inputVal[1] == "") {
+        $('#password_error').show();
+        $('#password_error').append('<br /> Please enter your ' + inputMessage[1]);
+    }
+
+    if (inputVal[2] == "") {
+
+        $('#pass2_error').show();
+        $('#pass2_error').append('<br /> Please enter your ' + inputMessage[2]);
+    } 
+    if (inputVal[2] != inputVal[1]) {
+        $('#pass2_error').show();
+        $('#pass2_error').append('<br /> Password dose not match');
+    }       
+}   
+
+      });
+    </script>*@
+
+@section Scripts {
+  @Scripts.Render("~/bundles/jquery")
+    <script>
+
+        $(document).ready(function () {
+
+            $('#checking').hide();
+
+            $('#b1').click(function () {
+
+                var userName = $('#userName').val();
+
+                //alert('User Name ='+ userName);
+                $('#checking').show();
+                $.getJSON("/User/CheckUserName?UserName=" + userName, function (data) {
+                    $('#checking').hide();
+                    if (data) {
+                        $('#user_name_error').text("User already exists in database");
+
+                    }
+                    else {
+                        $('#user_name_error').text("User Name is available");
+                    }
+                });
+
+            });
+
+        });
+    </script> 
+}

@@ -1,0 +1,164 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using WasifProject.Models;
+
+namespace WasifProject.Controllers
+{
+    public class FileController : Controller
+    {
+        private CodeDBEntities db = new CodeDBEntities();
+
+        //
+        // GET: /Default1/
+
+        public ActionResult Index()
+        {
+            UserTable user = Session["Key"] as WasifProject.Models.UserTable;
+            Admin admin = Session["Admin"] as WasifProject.Models.Admin;
+            if (user == null && admin==null)
+                return RedirectToAction("../User/Login");
+            var query = from vals in db.FileDatas 
+                        where vals.user_id == user.Id 
+                            select vals;
+            if (admin != null)
+                return RedirectToAction("../Admin/Menu");
+            return  View(query);
+        }
+
+        //
+        // GET: /Default1/Details/5
+
+        public ActionResult Details(int id = 0)
+        {
+            FileData filedata = db.FileDatas.Find(id);
+            if (filedata == null)
+            {
+                return HttpNotFound();
+            }
+            return View(filedata);
+        }
+
+        //
+        // GET: /Default1/Create
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Default1/Create
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(FileData filedata)
+        {
+            if (ModelState.IsValid)
+            {
+                db.FileDatas.Add(filedata);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(filedata);
+        }
+
+        //
+        // GET: /Default1/Edit/5
+
+        public ActionResult Edit(int id = 0)
+        {
+            FileData filedata = db.FileDatas.Find(id);
+            if (filedata == null)
+            {
+                return HttpNotFound();
+            }
+            return View(filedata);
+        }
+
+        //
+        // POST: /Default1/Edit/5
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(FileData filedata)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(filedata).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(filedata);
+        }
+
+        //
+        // GET: /Default1/Delete/5
+
+        public ActionResult Delete(int id = 0)
+        {
+            FileData filedata = db.FileDatas.Find(id);
+            if (filedata == null)
+            {
+                return HttpNotFound();
+            }
+            return View(filedata);
+        }
+
+        //
+        // POST: /Default1/Delete/5
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            FileData filedata = db.FileDatas.Find(id);
+            db.FileDatas.Remove(filedata);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
+       [HttpPost]
+        public ActionResult UploadAndRevify(FileData fd)
+        {
+            UserTable user = Session["Key"] as WasifProject.Models.UserTable;
+            Admin admin = Session["Admin"] as WasifProject.Models.Admin; 
+           if (user != null || admin!=null)
+            {
+                
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    HttpPostedFileBase file = Request.Files[i];
+                    file.SaveAs(Server.MapPath(@"~\Files\" + fd.fileName + "." + fd.type));
+                }
+                fd.user_id = user.Id;
+                fd.C_protectionLevel = Request["public"];
+                db.FileDatas.Add(fd);
+                db.SaveChanges();
+                
+                return RedirectToAction("../File/Index");
+            }
+            return RedirectToAction("../User/Login");
+        }
+
+        public ActionResult Upload() 
+        {
+            UserTable user = Session["Key"] as WasifProject.Models.UserTable;
+            Admin admin = Session["Admin"] as WasifProject.Models.Admin;
+            if (user != null|| admin!=null)
+                return View();
+            else
+                return RedirectToAction("../User/Login");
+        }
+    }
+}

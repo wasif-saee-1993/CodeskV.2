@@ -1,0 +1,161 @@
+﻿@model IEnumerable<WasifProject.Models.FileData>
+@{
+    Layout = null;
+    }
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+ @*   <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <script type="text/javascript" src="js/jquery-1.4.2.js" ></script>
+<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script>
+<script type="text/javascript" src="js/CabinSketch_700.font.js"></script>
+<script type="text/javascript" src="js/EB_Garamond_400.font.js"></script>
+  *@
+        @Styles.Render("~/Content/reset.css")
+        @Styles.Render("~/Content/layout.css")
+        @Styles.Render("~/Content/style.css")
+        @Styles.Render("~/Content/form.css")
+        @Styles.Render("~/Content/Table.css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/Script/jquery-1.4.2.js")
+        @Scripts.Render("~/Script/jquery.nivo.slider.pack.js")
+        @Scripts.Render("~/Script/cufon-yui.js")
+        @Scripts.Render("~/Script/cufon-replace.js")
+        @Scripts.Render("~/Script/CabinSketch_700.font.js")
+        @Scripts.Render("~/Script/EB_Garamond_400.font.js")
+        @Scripts.Render("~/Script/myScript.js")
+    
+</head>
+<body id="page1">
+    
+    <div class="main">
+        <header>
+        
+           
+		<h1><a href="/Home/Index" id="logo"></a></h1>
+        
+	</header>
+        <section id="content">
+		<div class="wrapper">
+			<article class="col1">
+				<h2>Home</h2>
+				<div class="pad_left1 pad_bot1">
+					<div id="slider">
+						<div id="for_img">
+							<div id="nivo_slider">
+								<img src="../Images/b1.jpg" alt="">
+								
+							</div>
+						</div>
+					</div>
+                  <form id="abc">
+					    
+					   <a href="../Search/Index" ><img src="~/Images/search.png" height="50" width="100"  /></a>
+				    </form>
+					
+                    
+                    <div class="datagrid">
+                        <table border:2>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.user_id)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.fileName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.type)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.C_protectionLevel)
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model) {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.user_id)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.fileName)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.type)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.C_protectionLevel)
+                                    </td>
+                                    <td>
+                                        <a href="~/File/Details?id=@item.Id"><img src="~/Images/detail.png"> </a>|
+                                        <a href="~/File/Delete?id=@item.Id"><img src="~/Images/del.jpg"> </a>
+                                       
+                                    </td>
+                                </tr>
+                            }
+
+                            </table>
+                        </div>
+                    
+				</div>
+				
+				
+    		</article>
+			
+		</div>
+	</section>
+    
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    	<footer>
+		<div class="wrapper">
+			<article class="col">
+				<h5>Why Us</h5>
+				<ul class="list1">
+					<li><a href="#">Sedut perspiciatis</a></li>
+					<li><a href="#">Unde omnis iste</a></li>
+					<li><a href="#">Natus error sit </a></li>
+					<li><a href="#">Volupttem accus</a></li>
+					<li><a href="#">Ntium doloremque </a></li>
+				</ul>
+			</article>
+			<article class="col pad_left2">
+				<h5>Links</h5>
+				<ul class="list1">
+					<li><a href="#">Audantium, totam</a></li>
+					<li><a href="#">Remaperiam, eaque</a></li>
+					<li><a href="#">Ipsa quae abillo</a></li>
+					<li><a href="#">Inventore veritatis et </a></li>
+					<li><a href="#">Quasi architecto </a></li>
+				</ul>
+			</article>
+			<article class="col pad_left2">
+				<h5>Follow Us</h5>
+				<ul class="icons">
+					<li><a href="#"><img src="~/Images/icon1.jpg" alt="">Facebook</a></li>
+					<li><a href="#"><img src="~/Images/icon2.jpg" alt="">Stumleupon</a></li>
+					<li><a href="#"><img src="~/Images/icon3.jpg" alt="">Twitter</a></li>
+					<li><a href="#"><img src="~/Images/icon4.jpg" alt="">Digg</a></li>
+					<li><a href="#"><img src="~/Images/icon5.jpg" alt="">RSS Feed</a></li>
+				</ul>
+			</article>
+			
+		</div>
+           
+           
+		<!--<article class="privacy">-->
+	</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+ @*   <link rel="stylesheet" href="css/reset.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+<link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <script type="text/javascript" src="js/jquery-1.4.2.js" ></script>
+<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script>
+<script type="text/javascript" src="js/CabinSketch_700.font.js"></script>
+<script type="text/javascript" src="js/EB_Garamond_400.font.js"></script>
+  *@
+        @Styles.Render("~/Content/reset.css")
+        @Styles.Render("~/Content/layout.css")
+        @Styles.Render("~/Content/style.css")
+        @Styles.Render("~/Content/form.css")
+        @Styles.Render("~/Content/Table.css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/Script/jquery-1.4.2.js")
+        @Scripts.Render("~/Script/jquery.nivo.slider.pack.js")
+        @Scripts.Render("~/Script/cufon-yui.js")
+        @Scripts.Render("~/Script/cufon-replace.js")
+        @Scripts.Render("~/Script/CabinSketch_700.font.js")
+        @Scripts.Render("~/Script/EB_Garamond_400.font.js")
+        @Scripts.Render("~/Script/myScript.js")
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
+    
+</head>
+<body id="page1">
+    <div style="float:right;">  @Html.Partial("_LoginPartial")</div>
+    <div class="main">
+        <header>
+        <div class="wrapper">
+			<nav>
+				<ul id="menu">
+					        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Account", "Account", "Home")</li>
+                            <li>@Html.ActionLink("Gallery", "Gallery", "Home")</li>
+                            <li>@Html.ActionLink("About", "About", "Home")</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+			</nav>
+  		</div>
+           
+		<h1><a href="~/Home/Index" id="logo"></a></h1>
+        
+	</header>
+        <section id="content">
+		<div class="wrapper">
+			<article class="col1">
+				<h2>Home</h2>
+				<div class="pad_left1 pad_bot1">
+					<div id="slider">
+						<div id="for_img">
+							<div id="nivo_slider">
+								<img src="~/Images/b1.jpg" alt="">
+								
+							</div>
+						</div>
+					</div>
+                  <div id="abc">
+					   @* <div class="wrapper">
+						    <input style="width:600px;height:30px;" id="srch"  type="text" value="search codes" onblur="if(this.value=='') this.value='Search codes'" onFocus="if(this.value =='Search Code' ) this.value=''" >
+					    </div>*@
+					   <a href="~/Search" ><img src="~/Images/search.png" height="50" width="100"  /></a>
+				    </div>
+					 @RenderSection("featured", required: false)
+				</div>
+				
+				@RenderBody()
+    		</article>
+			<article class="col2">
+				<h1>Uplaod code</h1><br/>
+				
+		            <a href="~/File/Upload"> <input type="button" style= "background-image:url(../Images/upload_1.png);height:100px;width:100px;background-color: transparent;" /></a>
+				    @RenderSection("images",required:false)
+    		</article>
+		</div>
+	</section>
+    
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+    	<footer>
+		<div class="wrapper">
+			<article class="col">
+				<h5>Why Us</h5>
+				<ul class="list1">
+					<li><a href="#">Sedut perspiciatis</a></li>
+					<li><a href="#">Unde omnis iste</a></li>
+					<li><a href="#">Natus error sit </a></li>
+					<li><a href="#">Volupttem accus</a></li>
+					<li><a href="#">Ntium doloremque </a></li>
+				</ul>
+			</article>
+			<article class="col pad_left2">
+				<h5>Links</h5>
+				<ul class="list1">
+					<li><a href="#">Audantium, totam</a></li>
+					<li><a href="#">Remaperiam, eaque</a></li>
+					<li><a href="#">Ipsa quae abillo</a></li>
+					<li><a href="#">Inventore veritatis et </a></li>
+					<li><a href="#">Quasi architecto </a></li>
+				</ul>
+			</article>
+			<article class="col pad_left2">
+				<h5>Follow Us</h5>
+				<ul class="icons">
+					<li><a href="#"><img src="~/Images/icon1.jpg" alt="">Facebook</a></li>
+					<li><a href="#"><img src="~/Images/icon2.jpg" alt="">Stumleupon</a></li>
+					<li><a href="#"><img src="~/Images/icon3.jpg" alt="">Twitter</a></li>
+					<li><a href="#"><img src="~/Images/icon4.jpg" alt="">Digg</a></li>
+					<li><a href="#"><img src="~/Images/icon5.jpg" alt="">RSS Feed</a></li>
+				</ul>
+			</article>
+			
+		</div>
+            @RenderSection("scripts", required: false)
+           
+		<!--<article class="privacy">-->
+	</footer>
+</div>
+</body>
+</html>

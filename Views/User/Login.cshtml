@@ -1,0 +1,37 @@
+﻿@model WasifProject.Models.userLogin
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<section id="loginForm">
+
+    
+@using (Html.BeginForm("ValidateAndLogin","User","post"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(false)
+  <table style="background-color:palegreen;grid-row-sizing:50px;border-style:groove;border-width:2px">
+            <tr>
+              <td>  @Html.LabelFor(m => m.userName)</td>
+               <td> @Html.TextBoxFor(m => m.userName)</td>
+               <td> @Html.ValidationMessageFor(m => m.userName)</td>
+            </tr>
+            <tr>
+               <td> @Html.LabelFor(m => m.password)</td>
+               <td> @Html.PasswordFor(m => m.password)</td>
+               <td>  @Html.ValidationMessageFor(m => m.password)</td>
+            </tr>
+           <tr> <td colspan="3" ><input type="submit" value="Login" onclick="return loginVerify();" /></td></tr>
+      
+        </table>
+    <div id="error" style="font-size:16px;color:red;font-weight:bold;">
+                    @ViewBag.ErrorMassge
+    </div>
+    <p>
+        @Html.ActionLink("Register", "Register") if you Don`t have an account.
+    </p>
+}
+</section>
+

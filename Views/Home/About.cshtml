@@ -1,0 +1,94 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<hgroup class="title">
+    <h2>@ViewBag.Title.</h2>
+    
+</hgroup>
+
+<article>
+    <p>
+        Ease of code Sharing 
+   
+    </p>
+
+    <p>
+        Secure Drive for codes
+    
+    </p>
+
+    <p>
+        1GB free code storage 
+    
+    </p>
+    <p>
+        Ease of code management
+        
+    </p>
+</article>
+
+<aside>
+    <p>
+           CodeDesk is a side which provide you the facility tho manage your code online. 
+           You can save you important codes on our side. <br/>We will provide you the facilities with total security.
+           <br/>
+           you can upload upto 1GB data totaly free on our webside. Sop get registered now and start uploading.  
+
+       </p>
+</aside>
+@section images{
+<div class="cols pad_left1">
+    <a href="~/Images/big_img5.jpg" class="lightbox-image" rel="prettyPhoto[group1]" title="Pellentesque quis"><img src="../Images/page3_img5.png" alt=""></a>
+        <a href="~/Images/big_img4.jpg" class="lightbox-image" rel="prettyPhoto[group1]" title="Nullam augue"><img src="../Images/page3_img4.png" alt=""></a>
+        <a href="~/Images/big_img3.jpg" class="lightbox-image" rel="prettyPhoto[group1]" title="Pellentesque quis"><img src="../Images/page3_img3.png" alt=""></a>
+     <a href="~/Images/big_img2.jpg" class="lightbox-image" rel="prettyPhoto[group1]" title="Nullam augue"><img src="../Images/page3_img2.png" alt="" height="250" width="250"></a>
+</div>
+}
+
+
+
+@section scripts{
+    
+    @*<link rel="stylesheet" href="~/Content/reset.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/layout.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/prettyPhoto.css" type="text/css" media="all">*@
+    @Styles.Render("~/Content/reset.css")
+    @Styles.Render("~/Content/layout.css")
+    @Styles.Render("~/Content/style.css")
+    @Styles.Render("~/Content/prettyPhoto.css")
+                        <script type="text/javascript">
+    @Scripts.Render("~/Scripts/jquery-1.4.2.js")
+    @Scripts.Render("~/Scripts/jquery.prettyPhoto.js")
+    @Scripts.Render("~/Scripts/cufon-yui.js")    
+    @Scripts.Render("~/Scripts/cufon-replace.js")
+    @Scripts.Render("~/Scripts/CabinSketch_700.font.js")
+    @Scripts.Render("~/Scripts/EB_Garamond_400.font.js")
+    @Scripts.Render("~/Scripts/hover-image.js")
+                            </script>
+@*<script type="text/javascript" src="js/jquery-1.4.2.js" ></script>
+<script type="text/javascript" src="js/jquery.prettyPhoto.js"></script>
+<script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script>
+<script type="text/javascript" src="js/CabinSketch_700.font.js"></script>
+<script type="text/javascript" src="js/EB_Garamond_400.font.js"></script>
+<script type="text/javascript" src="js/hover-image.js"></script>*@
+
+
+   
+
+                        <script type="text/javascript">Cufon.now();</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        if ($("a[rel^='prettyPhoto']").length) {
+            $(document).ready(function() {
+                // prettyPhoto
+                $("a[rel^='prettyPhoto']").prettyPhoto({theme:'facebook'});
+                ///// codegrabber ////////////
+                $(".code a.code-icon").toggle(function(){$(this).addClass("minus").next("p").slideDown();}, function(){$(this).removeClass("minus").next("p").slideUp();})
+            });
+        }
+    });
+    </script>
+    }

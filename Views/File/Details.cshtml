@@ -1,0 +1,65 @@
+﻿@model WasifProject.Models.FileData
+
+@{
+    
+    ViewBag.Title = "Details";
+    
+    
+    string urlOfFile =Url.Content( "~/Files/"+Model.user_id + Model.fileName + "." + Model.type);
+    
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend></legend>
+    <div class="datagrid">
+    <table>
+        <tr>
+            <th>
+         @Html.DisplayNameFor(model => model.user_id)
+            </th>
+            <td>
+        @Html.DisplayFor(model => model.user_id)
+            </td>
+        </tr>
+
+        <tr>
+            <th>
+         @Html.DisplayNameFor(model => model.fileName)
+            </th>
+            <td>
+    
+        @Html.DisplayFor(model => model.fileName)
+            </td>
+           </tr>
+        <tr>
+            <th>
+         @Html.DisplayNameFor(model => model.type)
+            </th>
+            <td>
+          @Html.DisplayFor(model => model.type)
+            </td>
+         </tr>
+         <tr>
+             <th>
+                
+         @Html.DisplayNameFor(model => model.C_protectionLevel)
+            </th>
+            <td>
+        @Html.DisplayFor(model => model.C_protectionLevel)
+            </td>
+      </tr>
+    </table>
+        
+       <iframe src='@urlOfFile'  width="500" height="200"></iframe>
+
+    </div>
+
+</fieldset>
+<p>
+    <a href="~/File/Index"><img src="~/Images/prettyPhoto/facebook/btnPrevious.png"></a>
+    <a href="~/File/Edit?id=@Model.Id"><img src="~/Images/edit.png"> </a> |
+    
+</p>
+

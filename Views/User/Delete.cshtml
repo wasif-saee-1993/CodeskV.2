@@ -1,0 +1,47 @@
+﻿@model WasifProject.Models.UserTable
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h4>Are you sure you want to De Activate Your Account?</h4>
+<fieldset>
+    <legend>UserTable</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.userName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.userName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.passwork)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.passwork)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.e_mail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.e_mail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.reg_date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.reg_date)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="De Activate" /> |
+        <a href="~/User/Index"><img src="~/Images/prettyPhoto/facebook/btnPrevious.png"></a>
+    </p>
+}

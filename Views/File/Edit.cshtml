@@ -1,0 +1,85 @@
+﻿@model WasifProject.Models.FileData
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend></legend>
+
+        @Html.HiddenFor(model => model.Id)
+        <Table>
+       @* <div class="editor-label">
+            @Html.LabelFor(model => model.user_id)
+        </div>*@
+            <tr>
+                <th>
+        
+            @Html.HiddenFor(model => model.user_id)
+            @*@Html.ValidationMessageFor(model => model.user_id)*@
+        
+                </th>
+           </tr>
+           <tr>
+               <th>
+       
+            @Html.LabelFor(model => model.fileName)
+     
+                </th>
+               <td>
+        
+            @Html.EditorFor(model => model.fileName)</td><td>
+            @Html.ValidationMessageFor(model => model.fileName)
+        
+             </td>
+          </tr>
+            <tr>
+                <th>
+        
+            @Html.LabelFor(model => model.type)
+        
+                </th>
+                <td>
+        
+            @Html.EditorFor(model => model.type)
+            @Html.ValidationMessageFor(model => model.type)
+        
+                </td>
+                </tr>
+            <tr>
+                <th>
+        
+            @Html.LabelFor(model => model.C_protectionLevel)
+        
+               </th>
+                <td>
+        
+            @Html.DisplayFor(model => model.C_protectionLevel)
+            @Html.ValidationMessageFor(model => model.C_protectionLevel)
+        
+                </td>
+                </tr>
+            <tr>
+                <td colspan="2">
+        <p>
+            <input type="submit" value="Save" style="width:100px"/>
+        </p>
+                    </td>
+                </tr>
+                    </Table>
+    </fieldset>
+}
+
+<div>
+    <a href="~/File/Index"><img src="~/Images/prettyPhoto/facebook/btnPrevious.png"></a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

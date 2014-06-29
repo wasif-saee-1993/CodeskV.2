@@ -1,0 +1,43 @@
+﻿@model WasifProject.Models.UserTable
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>UserTable</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.userName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.userName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.passwork)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.passwork)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.e_mail)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.e_mail)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.reg_date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.reg_date)
+    </div>
+</fieldset>
+<p>
+    <a href="~/User/Edit?id=@Model.Id"><img src="~/Images/edit.png"> </a> |
+    <a href="~/User/Index"><img src="~/Images/prettyPhoto/facebook/btnPrevious.png"></a>
+</p>

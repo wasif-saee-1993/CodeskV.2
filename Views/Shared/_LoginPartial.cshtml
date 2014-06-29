@@ -1,0 +1,19 @@
+﻿
+@{ var user = Session["Key"] as WasifProject.Models.UserTable ; //Get value from session  
+
+ }
+@if (user!=null ) {
+    <text>
+        
+        @using (Html.BeginForm("LogOff", "User", FormMethod.Post, new { id = "logoutForm", style = "color:white;" }))
+        {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()" style="color:white;">Log off</a>
+        }
+    </text>
+} else {
+    
+       @Html.ActionLink("Register", "Register", "User", routeValues: null, htmlAttributes: new { id = "registerLink", style="color:white;" })
+        @Html.ActionLink("Log in", "Login", "User", routeValues: null, htmlAttributes: new { id = "loginLink", style="color:white;" })
+    
+}
